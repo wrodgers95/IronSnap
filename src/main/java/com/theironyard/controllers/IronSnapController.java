@@ -107,6 +107,7 @@ public class IronSnapController {
 
         return p;
     }
+
     @RequestMapping("/photos")
     public List<Photo> showPhotos(HttpSession session) throws Exception {
 
@@ -124,9 +125,9 @@ public class IronSnapController {
             int deletionTimer = photos.findOne(p.getId()).getTimer();
 
             String fileName = photos.findOne(p.getId()).getFileName();
-            File f = new File("/Users/Blake/Code/NewCode/IronSnap/public" + fileName);
-            Timer timer = new Timer();
+            File f = new File("public/" + fileName);
 
+            Timer timer = new Timer();
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
@@ -138,7 +139,6 @@ public class IronSnapController {
             long delay = deletionTimer * 1000;
 
             timer.schedule(task, delay);
-
         }
 
         return photos.findByRecipient(user);
@@ -165,7 +165,6 @@ public class IronSnapController {
 
         return publicPhotos;
     }
-
 
     @PostConstruct
     public void init() throws SQLException {

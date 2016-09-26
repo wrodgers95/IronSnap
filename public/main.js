@@ -11,7 +11,7 @@ function getPhotos(photosData) {
     for (var i in photosData) {
         var photo = photosData[i];
         var elem = $("<img>");
-        elem.attr("src", photo.filename);
+        elem.attr("src", photo.fileName);
         $("#photos").append(elem);
     }
 }
